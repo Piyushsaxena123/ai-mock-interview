@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# Environment variables
+.env.local
+
+# Firebase/Google Cloud service account keys
+prepwise-fd68a-firebase-adminsdk-fbsvc-ec002bb6c0.json
+*.json
