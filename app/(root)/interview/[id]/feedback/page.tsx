@@ -10,18 +10,30 @@ import {
 import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/lib/actions/auth.action";
 
-// Define the type for the parsed category score
+// --- FIX: Defined interfaces directly in the file ---
 interface CategoryScore {
   name: string;
   score: number;
   comment: string;
 }
 
-const Feedback = async ({ params }: { params: { id: string } }) => {
+// We must also define Feedback here
+interface Feedback {
+  id: string;
+  interviewId: string;
+  totalScore: number;
+  categoryScores: string; // This is a JSON string
+  strengths: string; // This is a bulleted list string
+  areasForImprovement: string; // This is a bulleted list string
+  finalAssessment: string;
+  createdAt: string;
+}
+
+
+const FeedbackPage = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
   const user = await getCurrentUser();
 
-  // --- FIX 1: Check for user ---
   if (!user) {
     redirect("/sign-in");
   }
@@ -33,36 +45,29 @@ const Feedback = async ({ params }: { params: { id: string } }) => {
 
   const feedback = await getFeedbackByInterviewId({
     interviewId: id,
-    userId: user.id, // User is guaranteed to exist here
+    userId: user.id,
   });
 
-  // --- FIX 2: Check for NULL feedback ---
-  // This is the main crash. If feedback failed to save, we redirect.
+  
   if (!feedback) {
     console.log("No feedback found, redirecting to home.");
     redirect("/");
   }
-  // --- END OF FIX 2 ---
-
-  // --- FIX 3: Parse the STRING data from Firestore ---
+  
   let categoryScores: CategoryScore[] = [];
   let strengths: string[] = [];
   let areasForImprovement: string[] = [];
 
   try {
-    // Safely parse the JSON string
     if (feedback.categoryScores) {
       categoryScores = JSON.parse(feedback.categoryScores);
     }
   } catch (e) {
     console.error("Failed to parse categoryScores:", e);
-    // categoryScores will remain an empty array
   }
 
   try {
-    // Safely parse the strengths string (which is a bulleted list)
     if (feedback.strengths) {
-      // Split by newline and remove the "- " prefix
       strengths = feedback.strengths.split('\n').map(s => s.replace(/^- /, ''));
     }
   } catch (e) {
@@ -70,15 +75,13 @@ const Feedback = async ({ params }: { params: { id: string } }) => {
   }
 
   try {
-    // Safely parse the areasForImprovement string
     if (feedback.areasForImprovement) {
-      // Split by newline and remove the "- " prefix
       areasForImprovement = feedback.areasForImprovement.split('\n').map(s => s.replace(/^- /, ''));
     }
   } catch (e) {
     console.error("Failed to parse areasForImprovement:", e);
   }
-  // --- END OF FIX 3 ---
+  
 
   return (
     <section className="section-feedback">
@@ -91,7 +94,6 @@ const Feedback = async ({ params }: { params: { id: string } }) => {
 
       <div className="flex flex-row justify-center ">
         <div className="flex flex-row gap-5">
-          {/* Overall Impression */}
           <div className="flex flex-row gap-2 items-center">
             <Image src="/star.svg" width={22} height={22} alt="star" />
             <p>
@@ -102,8 +104,6 @@ const Feedback = async ({ params }: { params: { id: string } }) => {
               /100
             </p>
           </div>
-
-          {/* Date */}
           <div className="flex flex-row gap-2">
             <Image src="/calendar.svg" width={22} height={22} alt="calendar" />
             <p>
@@ -119,10 +119,8 @@ const Feedback = async ({ params }: { params: { id: string } }) => {
 
       <p>{feedback.finalAssessment}</p>
 
-      {/* Interview Breakdown */}
       <div className="flex flex-col gap-4">
         <h2>Breakdown of the Interview:</h2>
-        {/* Use the parsed categoryScores variable */}
         {categoryScores.map((category, index) => (
           <div key={index}>
             <p className="font-bold">
@@ -136,7 +134,6 @@ const Feedback = async ({ params }: { params: { id: string } }) => {
       <div className="flex flex-col gap-3">
         <h3>Strengths</h3>
         <ul>
-          {/* Use the parsed strengths variable */}
           {strengths.map((strength, index) => (
             <li key={index}>{strength}</li>
           ))}
@@ -146,7 +143,6 @@ const Feedback = async ({ params }: { params: { id: string } }) => {
       <div className="flex flex-col gap-3">
         <h3>Areas for Improvement</h3>
         <ul>
-          {/* Use the parsed areasForImprovement variable */}
           {areasForImprovement.map((area, index) => (
             <li key={index}>{area}</li>
           ))}
@@ -177,4 +173,4 @@ const Feedback = async ({ params }: { params: { id: string } }) => {
   );
 };
 
-export default Feedback;
+export default FeedbackPage;

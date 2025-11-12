@@ -10,6 +10,7 @@ import { vapi } from "@/lib/vapi.sdk";
 import { interviewer } from "@/constants";
 import { createFeedback, createInterview } from "@/lib/actions/general.action";
 
+// --- ADD THESE INTERFACES TO THE TOP OF Agent.tsx ---
 enum CallStatus {
   INACTIVE = "INACTIVE",
   CONNECTING = "CONNECTING",
@@ -21,6 +22,28 @@ interface SavedMessage {
   role: "user" | "system" | "assistant";
   content: string;
 }
+
+interface AgentProps {
+  userName: string;
+  userId?: string;
+  interviewId?: string;
+  feedbackId?: string;
+  type: "generate" | "interview";
+  questions?: string[];
+  role?: string;
+  level?: string;
+  techstack?: string[];
+}
+
+enum MessageTypeEnum { TRANSCRIPT = "transcript", FUNCTION_CALL = "function-call", FUNCTION_CALL_RESULT = "function-call-result", ADD_MESSAGE = "add-message" }
+enum MessageRoleEnum { USER = "user", SYSTEM = "system", ASSISTANT = "assistant" }
+enum TranscriptMessageTypeEnum { PARTIAL = "partial", FINAL = "final" }
+interface BaseMessage { type: MessageTypeEnum; }
+interface TranscriptMessage extends BaseMessage { type: MessageTypeEnum.TRANSCRIPT; role: MessageRoleEnum; transcriptType: TranscriptMessageTypeEnum; transcript: string; }
+interface FunctionCallMessage extends BaseMessage { type: MessageTypeEnum.FUNCTION_CALL; functionCall: { name: string; parameters: unknown; }; }
+interface FunctionCallResultMessage extends BaseMessage { type: MessageTypeEnum.FUNCTION_CALL_RESULT; functionCallResult: { forwardToClientEnabled?: boolean; result: unknown; [a: string]: unknown; }; }
+type Message = TranscriptMessage | FunctionCallMessage | FunctionCallResultMessage;
+// --- END OF FIX ---
 
 const Agent = ({
   userName,
@@ -86,6 +109,20 @@ const Agent = ({
         return currentMessages;
       });
     };
+
+enum CallStatus {
+  INACTIVE = "INACTIVE",
+  CONNECTING = "CONNECTING",
+  ACTIVE = "ACTIVE",
+  FINISHED = "FINISHED",
+}
+
+interface SavedMessage {
+  role: "user" | "system" | "assistant";
+  content: string;
+}
+
+
 
     const onMessage = (message: Message) => {
       if (message.type === "transcript" && message.transcriptType === "final") {

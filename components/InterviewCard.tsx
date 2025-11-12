@@ -8,6 +8,19 @@ import DisplayTechIcons from "./DisplayTechIcons";
 import { cn, getRandomInterviewCover } from "@/lib/utils";
 import { getFeedbackByInterviewId } from "@/lib/actions/general.action";
 
+// --- ADD THESE INTERFACES TO THE TOP OF InterviewCard.tsx ---
+interface InterviewCardProps {
+  interviewId?: string;
+  userId?: string;
+  role: string;
+  type: string;
+  techstack: string[];
+  createdAt?: string;
+}
+
+interface TechIconProps {
+  techStack: string[];
+}
 const InterviewCard = async ({
   interviewId,
   userId,

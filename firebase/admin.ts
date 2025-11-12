@@ -11,8 +11,10 @@ function initFirebaseAdmin() {
       credential: cert({
         projectId: process.env.FIREBASE_PROJECT_ID,
         clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-        // Replace newlines in the private key
-        privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+        // --- THIS IS THE FIX ---
+        // We no longer need to replace newline characters for Vercel
+        privateKey: process.env.FIREBASE_PRIVATE_KEY,
+        // --- END OF FIX ---
       }),
     });
   }
