@@ -30,8 +30,8 @@ interface Feedback {
 }
 
 
-const FeedbackPage = async ({ params }: { params: { id: string } }) => {
-  const { id } = params;
+const FeedbackPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+ const { id } = await params;
   const user = await getCurrentUser();
 
   if (!user) {
