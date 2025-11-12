@@ -1,0 +1,17 @@
+[33mcommit d7371e2c6643189de56393402375b254ed4ba1bc[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Piyushsaxena 123 <piyushsaxena7723@gmail.com>
+Date:   Sun Oct 26 15:55:54 2025 +0530
+
+    ignore eslint and typescript error(for now)
+
+[33mcommit 4e12f3d568ab419b9f435f28afcb94b3674e8659[m
+Author: Piyushsaxena 123 <piyushsaxena7723@gmail.com>
+Date:   Sun Oct 26 15:44:38 2025 +0530
+
+    implement interview generation
+
+[33mcommit a08e2114d31457a2e1cf17899714577292d75194[m
+Author: Piyushsaxena 123 <piyushsaxena7723@gmail.com>
+Date:   Sat Sep 6 12:47:17 2025 +0530
+
+    first commit

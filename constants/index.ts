@@ -155,39 +155,27 @@ End the conversation on a polite and positive note.
   },
 };
 
+// --- THIS IS THE CORRECTED SCHEMA ---
 export const feedbackSchema = z.object({
-  totalScore: z.number(),
-  categoryScores: z.tuple([
-    z.object({
-      name: z.literal("Communication Skills"),
-      score: z.number(),
-      comment: z.string(),
-    }),
-    z.object({
-      name: z.literal("Technical Knowledge"),
-      score: z.number(),
-      comment: z.string(),
-    }),
-    z.object({
-      name: z.literal("Problem Solving"),
-      score: z.number(),
-      comment: z.string(),
-    }),
-    z.object({
-      name: z.literal("Cultural Fit"),
-      score: z.number(),
-      comment: z.string(),
-    }),
-    z.object({
-      name: z.literal("Confidence and Clarity"),
-      score: z.number(),
-      comment: z.string(),
-    }),
-  ]),
-  strengths: z.array(z.string()),
-  areasForImprovement: z.array(z.string()),
-  finalAssessment: z.string(),
+  totalScore: z
+    .number()
+    .describe("The total score for the interview, from 0 to 100."),
+  categoryScores: z.string().describe(
+    "A JSON string of an array, where each object has 'name', 'score', and 'comment'. " +
+      "The categories must be: 'Communication Skills', 'Technical Knowledge', 'Problem Solving', 'Cultural Fit', and 'Confidence and Clarity'. " +
+      "Example: '[{\"name\":\"Technical Knowledge\",\"score\":85,\"comment\":\"Good job\"}, ...]'"
+  ),
+  strengths: z.string().describe(
+    "A single string containing a bulleted list of strengths. Example: '- Strong problem-solving\\n- Clear communication'"
+  ),
+  areasForImprovement: z.string().describe(
+    "A single string containing a bulleted list of areas for improvement. Example: '- More detailed examples\\n- Pace was a bit fast'"
+  ),
+  finalAssessment: z.string().describe(
+    "A final summary and assessment of the interview, around 2-3 sentences."
+  ),
 });
+// --- END OF CORRECTED SCHEMA ---
 
 export const interviewCovers = [
   "/adobe.png",

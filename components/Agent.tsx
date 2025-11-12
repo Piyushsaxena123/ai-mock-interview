@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 import { cn } from "@/lib/utils";
 import { vapi } from "@/lib/vapi.sdk";
 import { interviewer } from "@/constants";
-import { createFeedback } from "@/lib/actions/general.action";
+import { createFeedback, createInterview } from "@/lib/actions/general.action";
 
 enum CallStatus {
   INACTIVE = "INACTIVE",
@@ -28,42 +29,75 @@ const Agent = ({
   feedbackId,
   type,
   questions,
+  role = "Frontend Developer",
+  level = "Junior",
+  techstack = ["React", "Next.js"],
 }: AgentProps) => {
   const router = useRouter();
   const [callStatus, setCallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
   const [messages, setMessages] = useState<SavedMessage[]>([]);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [lastMessage, setLastMessage] = useState<string>("");
+  const [currentInterviewId, setCurrentInterviewId] = useState(interviewId);
+
+  // --- THIS IS THE FIX FOR BUG #1 ---
+  // We remove the `if (type === "generate")` check
+  // so that feedback is generated for *all* interview types.
+  const handleGenerateFeedback = useCallback(async (transcript: SavedMessage[]) => {
+    console.log("handleGenerateFeedback triggered with", transcript.length, "messages");
+
+    try {
+      const { success, feedbackId: id } = await createFeedback({
+        interviewId: currentInterviewId!,
+        userId: userId!,
+        transcript: transcript,
+        feedbackId: feedbackId,
+      });
+
+      if (success && id) {
+        // This is the correct redirect
+        router.push(`/interview/${currentInterviewId}/feedback`);
+      } else {
+        console.log("Error saving feedback from createFeedback");
+        toast.error("Sorry, we couldn't save your feedback.");
+        router.push("/");
+      }
+    } catch (error) {
+      console.error("Error in handleGenerateFeedback:", error);
+      toast.error("An error occurred while generating feedback.");
+      router.push("/");
+    }
+  }, [currentInterviewId, userId, feedbackId, router]); // Removed 'type' from dependencies
 
   useEffect(() => {
-    const onCallStart = () => {
-      setCallStatus(CallStatus.ACTIVE);
-    };
+    const onCallStart = () => setCallStatus(CallStatus.ACTIVE);
 
     const onCallEnd = () => {
+      console.log("Call ended. Triggering feedback generation.");
       setCallStatus(CallStatus.FINISHED);
+
+      setMessages((currentMessages) => {
+        if (currentMessages.length > 0) {
+          handleGenerateFeedback(currentMessages);
+        } else {
+          console.log("No messages recorded, redirecting.");
+          router.push("/");
+        }
+        return currentMessages;
+      });
     };
 
     const onMessage = (message: Message) => {
       if (message.type === "transcript" && message.transcriptType === "final") {
         const newMessage = { role: message.role, content: message.transcript };
         setMessages((prev) => [...prev, newMessage]);
+        setLastMessage(newMessage.content);
       }
     };
 
-    const onSpeechStart = () => {
-      console.log("speech start");
-      setIsSpeaking(true);
-    };
-
-    const onSpeechEnd = () => {
-      console.log("speech end");
-      setIsSpeaking(false);
-    };
-
-    const onError = (error: Error) => {
-      console.log("Error:", error);
-    };
+    const onSpeechStart = () => setIsSpeaking(true);
+    const onSpeechEnd = () => setIsSpeaking(false);
+    const onError = (error: Error) => console.log("Vapi Error:", error);
 
     vapi.on("call-start", onCallStart);
     vapi.on("call-end", onCallEnd);
@@ -80,42 +114,43 @@ const Agent = ({
       vapi.off("speech-end", onSpeechEnd);
       vapi.off("error", onError);
     };
-  }, []);
+  }, [handleGenerateFeedback, router]);
 
   useEffect(() => {
     if (messages.length > 0) {
       setLastMessage(messages[messages.length - 1].content);
     }
-
-    const handleGenerateFeedback = async (messages: SavedMessage[]) => {
-      console.log("handleGenerateFeedback");
-
-      const { success, feedbackId: id } = await createFeedback({
-        interviewId: interviewId!,
-        userId: userId!,
-        transcript: messages,
-        feedbackId,
-      });
-
-      if (success && id) {
-        router.push(`/interview/${interviewId}/feedback`);
-      } else {
-        console.log("Error saving feedback");
-        router.push("/");
-      }
-    };
-
-    if (callStatus === CallStatus.FINISHED) {
-      if (type === "generate") {
-        router.push("/");
-      } else {
-        handleGenerateFeedback(messages);
-      }
-    }
-  }, [messages, callStatus, feedbackId, interviewId, router, type, userId]);
+  }, [messages]);
 
   const handleCall = async () => {
     setCallStatus(CallStatus.CONNECTING);
+    let idToCall = currentInterviewId;
+
+    if (type === "generate" && !idToCall) {
+      try {
+        const interviewParams = {
+          userId: userId!,
+          role: role,
+          level: level,
+          techstack: techstack,
+          type: "generate",
+        };
+        const { success, interviewId: newId } = await createInterview(interviewParams);
+        
+        if (success && newId) {
+          idToCall = newId;
+          setCurrentInterviewId(newId);
+        } else {
+          toast.error("Could not create interview. Please try again.");
+          setCallStatus(CallStatus.INACTIVE);
+          return;
+        }
+      } catch (error) {
+        toast.error("Error creating interview.");
+        setCallStatus(CallStatus.INACTIVE);
+        return;
+      }
+    }
 
     if (type === "generate") {
       await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
@@ -131,7 +166,6 @@ const Agent = ({
           .map((question) => `- ${question}`)
           .join("\n");
       }
-
       await vapi.start(interviewer, {
         variableValues: {
           questions: formattedQuestions,
