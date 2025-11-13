@@ -100,7 +100,7 @@ export async function createFeedback(params: CreateFeedbackParams) {
 
     // --- THIS IS THE CORRECTED PROMPT ---
     const { object } = await generateObject({
-      model: google("gemini-2.0-flash-001"),
+      model: google("gemini-1.5-flash"),
       schema: feedbackSchema,
       prompt: `
         You are an AI interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories. Be thorough and detailed in your analysis. Don't be lenient. If there are mistakes, point them out.
