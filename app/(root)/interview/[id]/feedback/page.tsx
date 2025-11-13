@@ -17,7 +17,6 @@ interface CategoryScore {
   comment: string;
 }
 
-// We must also define Feedback here
 interface Feedback {
   id: string;
   interviewId: string;
@@ -29,9 +28,20 @@ interface Feedback {
   createdAt: string;
 }
 
+// --- FIX: Added the non-standard RouteParams interface ---
+interface RouteParams {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<Record<string, string>>;
+}
+// --- END OF FIX ---
 
-const FeedbackPage = async ({ params }: { params: Promise<{ id: string }> }) => {
- const { id } = await params;
+
+const FeedbackPage = async ({ params }: RouteParams) => {
+  // --- THIS IS THE FIX for the new error ---
+  // We MUST await params here, just like your other pages
+  const { id } = await params;
+  // --- END OF FIX ---
+
   const user = await getCurrentUser();
 
   if (!user) {
@@ -48,12 +58,13 @@ const FeedbackPage = async ({ params }: { params: Promise<{ id: string }> }) => 
     userId: user.id,
   });
 
-  
+  // Check for NULL feedback
   if (!feedback) {
     console.log("No feedback found, redirecting to home.");
     redirect("/");
   }
-  
+
+  // Parse the STRING data from Firestore
   let categoryScores: CategoryScore[] = [];
   let strengths: string[] = [];
   let areasForImprovement: string[] = [];
@@ -81,7 +92,7 @@ const FeedbackPage = async ({ params }: { params: Promise<{ id: string }> }) => 
   } catch (e) {
     console.error("Failed to parse areasForImprovement:", e);
   }
-  
+  // --- END OF PARSING ---
 
   return (
     <section className="section-feedback">
@@ -154,7 +165,7 @@ const FeedbackPage = async ({ params }: { params: Promise<{ id: string }> }) => 
           <Link href="/" className="flex w-full justify-center">
             <p className="text-sm font-semibold text-primary-200 text-center">
               Back to dashboard
-            </p>
+           </p>
           </Link>
         </Button>
 

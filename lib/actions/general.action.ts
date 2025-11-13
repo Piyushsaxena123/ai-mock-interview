@@ -6,6 +6,49 @@ import { google } from "@ai-sdk/google";
 import { db } from "@/firebase/admin";
 import { feedbackSchema } from "@/constants";
 
+// --- FIX: Added all type definitions ---
+interface Feedback {
+  id: string;
+  interviewId: string;
+  totalScore: number;
+  categoryScores: string;
+  strengths: string;
+  areasForImprovement: string;
+  finalAssessment: string;
+  createdAt: string;
+}
+
+interface Interview {
+  id: string;
+  role: string;
+  level: string;
+  questions: string[];
+  techstack: string[];
+  createdAt: string;
+  userId: string;
+  type: string;
+  finalized: boolean;
+}
+
+interface CreateFeedbackParams {
+  interviewId: string;
+  userId: string;
+  transcript: { role: string; content: string }[];
+  feedbackId?: string;
+}
+
+interface GetFeedbackByInterviewIdParams {
+  interviewId: string;
+  userId: string;
+}
+
+interface GetLatestInterviewsParams {
+  userId: string;
+  limit?: number;
+}
+// --- END OF FIX ---
+
+
 // NEW FUNCTION TO CREATE THE INTERVIEW *BEFORE* THE CALL
 export async function createInterview(params: {
   userId: string;
@@ -74,7 +117,7 @@ export async function createFeedback(params: CreateFeedbackParams) {
 
         ---
         IMPORTANT OUTPUT FORMATTING INSTRUCTIONS:
-        1.  For 'categoryScores', you MUST return a valid JSON string of an array. Example: '[{"name":"Communication Skills","score":80,"comment":"Very clear."},{"name":"Technical Knowledge","score":75,"comment":"A bit weak on..."}]'
+        1.  For 'categoryScores', you MUST return a valid, single-line, minified JSON string of an array. Do not include any newlines. Example: '[{"name":"Communication Skills","score":80,"comment":"Very clear."},{"name":"Technical Knowledge","score":75,"comment":"A bit weak on..."}]'
         2.  For 'strengths', you MUST return a single string containing a bulleted list (using '-'). Example: '- Good problem solving\n- Clear communication'
         3.  For 'areasForImprovement', you MUST return a single string containing a bulleted list (using '-'). Example: '- Needs more detailed examples\n- Should speak more confidently'
         4.  For 'totalScore', you MUST calculate and return the average of the 5 category scores.
@@ -88,12 +131,12 @@ export async function createFeedback(params: CreateFeedbackParams) {
     const feedback = {
       interviewId: interviewId,
       userId: userId,
-      totalScore: object.totalScore, // This will now be the calculated average
-      categoryScores: object.categoryScores, // This is now a JSON string
-      strengths: object.strengths, // This is now a single string
-      areasForImprovement: object.areasForImprovement, // This is now a single string
+      totalScore: object.totalScore,
+      categoryScores: object.categoryScores,
+      strengths: object.strengths,
+      areasForImprovement: object.areasForImprovement,
       finalAssessment: object.finalAssessment,
-      createdAt: new Date().toISOString(), // This will fix the "wrong date"
+      createdAt: new Date().toISOString(),
     };
 
     let feedbackRef;
@@ -159,7 +202,6 @@ export async function getLatestInterviews(
     .collection("interviews")
     .orderBy("createdAt", "desc")
     .where("finalized", "==", true)
-    // .where("userId", "!=", userId) // This line is commented out, which is fine
     .limit(limit)
     .get();
 
