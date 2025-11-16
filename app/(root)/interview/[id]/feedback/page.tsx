@@ -10,7 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { getCurrentUser } from "@/lib/actions/auth.action";
 
-// Interfaces
+// --- FIX: Defined interfaces directly in the file ---
 interface CategoryScore {
   name: string;
   score: number;
@@ -21,76 +21,89 @@ interface Feedback {
   id: string;
   interviewId: string;
   totalScore: number;
-  categoryScores: string;
-  strengths: string;
-  areasForImprovement: string;
+  categoryScores: string; // This is a JSON string
+  strengths: string; // This is a bulleted list string
+  areasForImprovement: string; // This is a bulleted list string
   finalAssessment: string;
   createdAt: string;
 }
 
+// --- FIX: Added the non-standard RouteParams interface ---
 interface RouteParams {
   params: Promise<{ id: string }>;
   searchParams: Promise<Record<string, string>>;
 }
+// --- END OF FIX ---
+
 
 const FeedbackPage = async ({ params }: RouteParams) => {
+  // --- THIS IS THE FIX for the new error ---
+  // We MUST await params here, just like your other pages
   const { id } = await params;
+  // --- END OF FIX ---
 
   const user = await getCurrentUser();
-  if (!user) redirect("/sign-in");
+
+  if (!user) {
+    redirect("/sign-in");
+  }
 
   const interview = await getInterviewById(id);
-  if (!interview) redirect("/");
+  if (!interview) {
+    redirect("/");
+  }
 
   const feedback = await getFeedbackByInterviewId({
     interviewId: id,
     userId: user.id,
   });
 
+  // Check for NULL feedback
   if (!feedback) {
     console.log("No feedback found, redirecting to home.");
     redirect("/");
   }
 
-  // Parse feedback fields
+  // Parse the STRING data from Firestore
   let categoryScores: CategoryScore[] = [];
   let strengths: string[] = [];
   let areasForImprovement: string[] = [];
 
   try {
-    categoryScores = feedback.categoryScores
-      ? JSON.parse(feedback.categoryScores)
-      : [];
+    if (feedback.categoryScores) {
+      categoryScores = JSON.parse(feedback.categoryScores);
+    }
   } catch (e) {
     console.error("Failed to parse categoryScores:", e);
   }
 
   try {
-    strengths = feedback.strengths
-      ? feedback.strengths.split("\n").map((s) => s.replace(/^- /, ""))
-      : [];
+    if (feedback.strengths) {
+      strengths = feedback.strengths.split('\n').map(s => s.replace(/^- /, ''));
+    }
   } catch (e) {
     console.error("Failed to parse strengths:", e);
   }
 
   try {
-    areasForImprovement = feedback.areasForImprovement
-      ? feedback.areasForImprovement.split("\n").map((s) => s.replace(/^- /, ""))
-      : [];
+    if (feedback.areasForImprovement) {
+      areasForImprovement = feedback.areasForImprovement.split('\n').map(s => s.replace(/^- /, ''));
+    }
   } catch (e) {
     console.error("Failed to parse areasForImprovement:", e);
   }
+  // --- END OF PARSING ---
 
   return (
     <section className="section-feedback">
       <div className="flex flex-row justify-center">
         <h1 className="text-4xl font-semibold">
-          Feedback on the Interview –{" "}
-          <span className="capitalize">{interview.role}</span>
+          Feedback on the Interview -{" "}
+          <span className="capitalize">{interview.role}</span> Interview
         </h1>
       </div>
 
-      <div className="flex flex-row justify-center mt-4">
+      <div className="flex flex-row justify-center ">
         <div className="flex flex-row gap-5">
           <div className="flex flex-row gap-2 items-center">
             <Image src="/star.svg" width={22} height={22} alt="star" />
@@ -102,8 +115,7 @@ const FeedbackPage = async ({ params }: RouteParams) => {
               /100
             </p>
           </div>
-
-          <div className="flex flex-row gap-2 items-center">
+          <div className="flex flex-row gap-2">
             <Image src="/calendar.svg" width={22} height={22} alt="calendar" />
             <p>
               {feedback.createdAt
@@ -114,12 +126,12 @@ const FeedbackPage = async ({ params }: RouteParams) => {
         </div>
       </div>
 
-      <hr className="my-6" />
+      <hr />
 
-      <p className="text-lg">{feedback.finalAssessment}</p>
+      <p>{feedback.finalAssessment}</p>
 
-      <div className="mt-8 flex flex-col gap-4">
-        <h2 className="text-xl font-bold">Breakdown of the Interview:</h2>
+      <div className="flex flex-col gap-4">
+        <h2>Breakdown of the Interview:</h2>
         {categoryScores.map((category, index) => (
           <div key={index}>
             <p className="font-bold">
@@ -130,36 +142,39 @@ const FeedbackPage = async ({ params }: RouteParams) => {
         ))}
       </div>
 
-      <div className="mt-8 flex flex-col gap-3">
-        <h3 className="text-lg font-semibold">Strengths</h3>
+      <div className="flex flex-col gap-3">
+        <h3>Strengths</h3>
         <ul>
           {strengths.map((strength, index) => (
-            <li key={index}>• {strength}</li>
+            <li key={index}>{strength}</li>
           ))}
         </ul>
       </div>
 
-      <div className="mt-8 flex flex-col gap-3">
-        <h3 className="text-lg font-semibold">Areas for Improvement</h3>
+      <div className="flex flex-col gap-3">
+        <h3>Areas for Improvement</h3>
         <ul>
           {areasForImprovement.map((area, index) => (
-            <li key={index}>• {area}</li>
+            <li key={index}>{area}</li>
           ))}
         </ul>
       </div>
 
-      <div className="buttons mt-10 flex gap-4">
+      <div className="buttons">
         <Button className="btn-secondary flex-1">
-          <Link href="/" className="w-full text-center">
-            <p className="text-sm font-semibold text-primary-200">
+          <Link href="/" className="flex w-full justify-center">
+            <p className="text-sm font-semibold text-primary-200 text-center">
               Back to dashboard
-            </p>
+           </p>
           </Link>
         </Button>
 
         <Button className="btn-primary flex-1">
-          <Link href={`/interview/${id}`} className="w-full text-center">
-            <p className="text-sm font-semibold text-black">
+          <Link
+            href={`/interview/${id}`}
+            className="flex w-full justify-center"
+          >
+            <p className="text-sm font-semibold text-black text-center">
               Retake Interview
             </p>
           </Link>
