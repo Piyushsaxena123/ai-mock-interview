@@ -2,14 +2,14 @@
 
 <div align="center"> <br/>
   <div> <br/>
-    <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge" /> <br/>
-    <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge" /> <br/>
-    <img src="https://img.shields.io/badge/TailwindCSS-0EA5E9?style=for-the-badge" /> <br/>
-    <img src="https://img.shields.io/badge/Vapi_AI-8A2BE2?style=for-the-badge" /> <br/>
-    <img src="https://img.shields.io/badge/Sipline_API-FF5733?style=for-the-badge" /> <br/>
-    <img src="https://img.shields.io/badge/Gemini_API-4285F4?style=for-the-badge" /> <br/>
-    <img src="https://img.shields.io/badge/Firebase-F5820D?style=for-the-badge" /> <br/>
-    <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge" /> <br/>
+    <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge" /> 
+    <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge" /> 
+    <img src="https://img.shields.io/badge/TailwindCSS-0EA5E9?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/Vapi_AI-8A2BE2?style=for-the-badge" /> 
+    <img src="https://img.shields.io/badge/Sipline_API-FF5733?style=for-the-badge" /> 
+    <img src="https://img.shields.io/badge/Gemini_API-4285F4?style=for-the-badge" /> 
+    <img src="https://img.shields.io/badge/Firebase-F5820D?style=for-the-badge" /> 
+    <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge" /> 
   </div> <br/>
 
   <h3 align="center">PrepWise – An AI-powered mock interview platform built using Vapi, Sipline, Gemini, and Firebase to simulate real-time interview experiences.</h3> <br/>
@@ -146,13 +146,12 @@ Hosted on **Vercel** for fast global performance. <br/>
 
 ## ⭐ Want to Contribute? <br/>
 
-Feel free to contribute or suggest improvements! <br/>
-If you like **PrepWise**, consider giving the repository a ⭐. <br/>
+We welcome contributions to enhance PrepWise! <br/>
+You can contribute by: <br/>
+🛠️ Submitting pull requests <br/>
+🐞 Reporting issues <br/>
+💡 Suggesting new features or improvements <br/>
+
+If you like PrepWise, don’t forget to star ⭐ the repository — it helps others discover this project! <br/>
 
 ---
-
-If you want, I can also add:
-✅ GIF demo section <br/>
-✅ Installation guide <br/>
-✅ API keys setup instructions for Vapi, Sipline, Firebase <br/>
-Just tell me!
