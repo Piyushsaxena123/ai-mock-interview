@@ -20,9 +20,9 @@
 ## 👤 Author <br/>
 
 **Developed by:** **Piyush Saxena** <br/>
-🔗 GitHub: [https://github.com/Piyushsaxena123](https://github.com/Piyushsaxena123) <br/>
-🌐 Live Website: [https://ai-mock-interview-orcin-iota.vercel.app/](https://ai-mock-interview-orcin-iota.vercel.app/) <br/>
-📦 Repository: [https://github.com/Piyushsaxena123/ai-mock-interview](https://github.com/Piyushsaxena123/ai-mock-interview) <br/>
+🔗 GitHub: https://github.com/Piyushsaxena123 <br/>
+🌐 Live Website: https://ai-mock-interview-orcin-iota.vercel.app/ <br/>
+📦 Repository: https://github.com/Piyushsaxena123/ai-mock-interview <br/>
 
 <hr/>
 
@@ -46,55 +46,49 @@ Below are some images showcasing the PrepWise platform UI. <br/>
 
 ### 🖼️ Home Page Preview <br/>
 
-<img src="https://via.placeholder.com/900x500.png?text=PrepWise+Homepage+Screenshot" width="800" /> <br/><br/>
+<!-- ⭐ Replace this link with your actual GitHub raw image link -->
+<img src="https://raw.githubusercontent.com/Piyushsaxena123/ai-mock-interview/main/public/Home-Page-Preview.png" width="800" /> <br/><br/>
 
 ### 🧑‍💻 Interview Screen <br/>
 
-<img src="https://via.placeholder.com/900x500.png?text=AI+Interview+Screen" width="800" /> <br/><br/>
+<img src="https://via.placeholder.com/900x500.png?text=PrepWise+Interview+Screen" width="800" /> <br/><br/>
 
 ### 📊 Evaluation & Report Page <br/>
 
-<img src="https://via.placeholder.com/900x500.png?text=Evaluation+Reports" width="800" /> <br/><br/>
+<img src="https://via.placeholder.com/900x500.png?text=Evaluation+Report+Preview" width="800" /> <br/><br/>
 
 </div>
-
-Replace these URLs with your actual project images. <br/>
 
 <hr/>
 
 ## ⚙️ Tech Stack <br/>
 
-* Next.js
-* React
-* TailwindCSS
-* Vapi AI
-* Sipline API
-* Gemini AI
-* Firebase
-* Vercel
+* Next.js <br/>
+* React <br/>
+* TailwindCSS <br/>
+* Vapi AI <br/>
+* Sipline API <br/>
+* Gemini AI <br/>
+* Firebase <br/>
+* Vercel <br/>
 
 <hr/>
 
 ## 🛠️ Implementation (Brief Overview) <br/>
 
 ### 🔊 Vapi AI – Voice Interview Interaction <br/>
-
 Real-time voice conversation with an AI interviewer. <br/>
 
 ### 🧠 Gemini API – Smart Question Generation <br/>
-
 Dynamic tech, HR, and behavioral questions. <br/>
 
 ### 📁 Firebase – Database & Storage <br/>
-
 Stores interview history, user responses, reports. <br/>
 
 ### 🎨 Sipline API – 3D Model Integration + Feedback <br/>
-
 Adds a 3D animated interviewer and processes feedback. <br/>
 
 ### 🖥️ UI Layer (Next.js + Tailwind) <br/>
-
 Fast, responsive, and clean interface. <br/>
 
 <hr/>
@@ -112,19 +106,20 @@ Fast, responsive, and clean interface. <br/>
 
 ## 📂 Project Structure <br/>
 
-```
 ai-mock-interview/
-│── public/           <br/>
-│── src/              <br/>
-│   ├── app/          <br/>
-│   ├── components/   <br/>
-│   ├── lib/          <br/>
-│   ├── styles/       <br/>
-│   └── utils/        <br/>
-│── package.json      <br/>
-│── next.config.js    <br/>
-│── README.md         <br/>
-```
+│── public/
+│── src/
+│ ├── app/
+│ ├── components/
+│ ├── lib/
+│ ├── styles/
+│ └── utils/
+│── package.json
+│── next.config.js
+│── README.md
+
+yaml
+Copy code
 
 <hr/>
 
@@ -132,16 +127,16 @@ ai-mock-interview/
 
 Hosted on **Vercel** for fast global performance. <br/>
 
-🌐 Live Demo: [https://ai-mock-interview-orcin-iota.vercel.app/](https://ai-mock-interview-orcin-iota.vercel.app/) <br/>
-📦 Source Code: [https://github.com/Piyushsaxena123/ai-mock-interview](https://github.com/Piyushsaxena123/ai-mock-interview) <br/>
+🌐 Live Demo: https://ai-mock-interview-orcin-iota.vercel.app/ <br/>
+📦 Source Code: https://github.com/Piyushsaxena123/ai-mock-interview <br/>
 
 <hr/>
 
 ## 🔗 Links <br/>
 
-* GitHub: [https://github.com/Piyushsaxena123](https://github.com/Piyushsaxena123) <br/>
-* Live Website: [https://ai-mock-interview-orcin-iota.vercel.app/](https://ai-mock-interview-orcin-iota.vercel.app/) <br/>
-* Repository: [https://github.com/Piyushsaxena123/ai-mock-interview](https://github.com/Piyushsaxena123/ai-mock-interview) <br/>
+* GitHub: https://github.com/Piyushsaxena123 <br/>
+* Live Website: https://ai-mock-interview-orcin-iota.vercel.app/ <br/>
+* Repository: https://github.com/Piyushsaxena123/ai-mock-interview <br/>
 
 <hr/>
 
