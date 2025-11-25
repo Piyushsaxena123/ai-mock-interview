@@ -41,7 +41,8 @@ Perfect for: <br/>
 
 Below are some images showcasing the PrepWise platform UI. <br/>
 
-<div align="center"> <br/>
+<div align="center">![Home Page Preview](https://raw.githubusercontent.com/Piyushsaxena123/ai-mock-interview/main/public/Home%20Page%20Preview%20.png)
+ <br/>
 
 ### 🖼️ Home Page Preview <br/>
 
