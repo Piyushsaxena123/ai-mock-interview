@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🤖 AI Mock Interview Platform
+<div align="center"> <br /> <div> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" /> <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" /> <img src="https://img.shields.io/badge/TailwindCSS-0EA5E9?style=for-the-badge&logo=tailwindcss&logoColor=white" /> <img src="https://img.shields.io/badge/Clerk-3D3D3D?style=for-the-badge&logo=clerk&logoColor=white" /> <img src="https://img.shields.io/badge/Gemini_API-4285F4?style=for-the-badge&logo=google&logoColor=white" /> <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" /> </div> <h3 align="center">An AI-powered mock interview platform built using Next.js, Gemini API, and modern UI components to help developers prepare efficiently.</h3> </div>
+👤 Author
 
-## Getting Started
+Developed by: Piyush Saxena
+🔗 GitHub: https://github.com/Piyushsaxena123
 
-First, run the development server:
+🌐 Live Website: https://ai-mock-interview-orcin-iota.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+📦 Repository: https://github.com/Piyushsaxena123/ai-mock-interview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📘 Introduction
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The AI Mock Interview Platform is a smart, interactive tool designed to help users practice technical interviews.
+It uses Google Gemini AI Model to generate real-time interview questions, evaluate responses, and provide actionable feedback — all inside a clean, responsive UI.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This platform is ideal for:
 
-## Learn More
+✔️ Students
+✔️ Job seekers
+✔️ Developers preparing for internships/full-time roles
 
-To learn more about Next.js, take a look at the following resources:
+⚙️ Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Next.js 15 (App Router)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+React
 
-## Deploy on Vercel
+TailwindCSS
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Google Gemini API
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Clerk Authentication
+
+Vercel (Hosting)
+
+🔥 Features
+🎤 AI-Generated Interview Questions
+
+Dynamic questions based on user-selected role (DSA, Web Dev, ML, etc.)
+
+Difficulty-based prompts
+
+Realistic interview-style responses
+
+📝 Answer Evaluation
+
+AI analyzes user answers
+
+Gives clarity, correctness, and improvement suggestions
+
+🧑‍💻 Role-Based Interview Modes
+
+Frontend
+
+Backend
+
+Data Structures & Algorithms
+
+Computer Science Fundamentals
+
+🔐 Secure Authentication
+
+Clerk login with Google, email, or username
+
+Private user dashboard
+
+📊 History & Reports
+
+Saves previous interviews
+
+Shows scoring, feedback, and improvements
+
+🖥️ Modern UI/UX
+
+Minimal design
+
+Dark/Light theme ready
+
+Fully responsive
+
+📂 Project Structure
+ai-mock-interview/
+│── public/
+│── src/
+│   ├── app/
+│   ├── components/
+│   ├── lib/
+│   ├── styles/
+│   └── utils/
+│── package.json
+│── next.config.js
+│── README.md
+
+🚀 Deployment
+
+This platform is deployed using Vercel for instant builds and smooth SSR performance.
+
+🌐 Live Demo: https://ai-mock-interview-orcin-iota.vercel.app/
+
+📦 Source Code: https://github.com/Piyushsaxena123/ai-mock-interview
+
+🔗 Links
+
+GitHub: https://github.com/Piyushsaxena123
+
+Live Project: https://ai-mock-interview-orcin-iota.vercel.app/
+
+Repo: https://github.com/Piyushsaxena123/ai-mock-interview
