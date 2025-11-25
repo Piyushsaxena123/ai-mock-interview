@@ -1,109 +1,112 @@
-🤖 AI Mock Interview Platform
-<div align="center"> <br /> <div> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" /> <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" /> <img src="https://img.shields.io/badge/TailwindCSS-0EA5E9?style=for-the-badge&logo=tailwindcss&logoColor=white" /> <img src="https://img.shields.io/badge/Clerk-3D3D3D?style=for-the-badge&logo=clerk&logoColor=white" /> <img src="https://img.shields.io/badge/Gemini_API-4285F4?style=for-the-badge&logo=google&logoColor=white" /> <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" /> </div> <h3 align="center">An AI-powered mock interview platform built using Next.js, Gemini API, and modern UI components to help developers prepare efficiently.</h3> </div>
-👤 Author
+🤖 AI Mock Interview Platform <br/>
+<div align="center"> <br/> <div> <br/> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" /> <br/> <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" /> <br/> <img src="https://img.shields.io/badge/TailwindCSS-0EA5E9?style=for-the-badge&logo=tailwindcss&logoColor=white" /> <br/> <img src="https://img.shields.io/badge/Vapi_AI-8A2BE2?style=for-the-badge&logo=voice&logoColor=white" /> <br/> <img src="https://img.shields.io/badge/Sipline_API-FF5733?style=for-the-badge&logo=api&logoColor=white" /> <br/> <img src="https://img.shields.io/badge/Gemini_API-4285F4?style=for-the-badge&logo=google&logoColor=white" /> <br/> <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" /> <br/> </div> <br/> <h3 align="center">An AI-powered mock interview platform using Vapi, Sipline, and Gemini to simulate real-time conversational interviews.</h3> <br/> </div> <br/>
+👤 Author <br/>
 
-Developed by: Piyush Saxena
+Developed by: Piyush Saxena <br/>
 🔗 GitHub: https://github.com/Piyushsaxena123
-
+ <br/>
 🌐 Live Website: https://ai-mock-interview-orcin-iota.vercel.app/
-
+ <br/>
 📦 Repository: https://github.com/Piyushsaxena123/ai-mock-interview
+ <br/>
 
-📘 Introduction
+📘 Introduction <br/>
 
-The AI Mock Interview Platform is a smart, interactive tool designed to help users practice technical interviews.
-It uses Google Gemini AI Model to generate real-time interview questions, evaluate responses, and provide actionable feedback — all inside a clean, responsive UI.
+The AI Mock Interview Platform is a smart, conversational interview simulator. <br/>
+It uses Vapi AI for voice-based interactions, Sipline API for automated feedback pipelines, and Gemini API for question generation. <br/>
+Users can practice technical and behavioral interviews just like a real conversation. <br/>
 
-This platform is ideal for:
+Perfect for: <br/>
+✔️ Students <br/>
+✔️ Job seekers <br/>
+✔️ Developers preparing for interviews <br/>
 
-✔️ Students
-✔️ Job seekers
-✔️ Developers preparing for internships/full-time roles
+⚙️ Tech Stack <br/>
 
-⚙️ Tech Stack
+Next.js 15 (App Router) <br/>
 
-Next.js 15 (App Router)
+React <br/>
 
-React
+TailwindCSS <br/>
 
-TailwindCSS
+Vapi AI (Voice Interview Engine) <br/>
 
-Google Gemini API
+Sipline API (Feedback & Scoring Engine) <br/>
 
-Clerk Authentication
+Gemini AI <br/>
 
-Vercel (Hosting)
+Vercel Hosting <br/>
 
-🔥 Features
-🎤 AI-Generated Interview Questions
+🔥 Features <br/>
+🎤 AI Voice-Based Interview (Vapi AI) <br/>
 
-Dynamic questions based on user-selected role (DSA, Web Dev, ML, etc.)
+Real-time voice conversation with an AI interviewer <br/>
 
-Difficulty-based prompts
+Natural language responses and follow-up questions <br/>
 
-Realistic interview-style responses
+🧠 Smart Question Generation (Gemini) <br/>
 
-📝 Answer Evaluation
+Role-based questions: DSA, Web Dev, Backend, ML, HR <br/>
 
-AI analyzes user answers
+Difficulty-based question selection <br/>
 
-Gives clarity, correctness, and improvement suggestions
+📝 Automated Answer Evaluation (Sipline API) <br/>
 
-🧑‍💻 Role-Based Interview Modes
+Scores your answers on clarity, correctness, depth <br/>
 
-Frontend
+Gives improvement suggestions with examples <br/>
 
-Backend
+🧑‍💻 Multiple Roles & Modes <br/>
 
-Data Structures & Algorithms
+Technical Round <br/>
 
-Computer Science Fundamentals
+HR Round <br/>
 
-🔐 Secure Authentication
+System Design <br/>
 
-Clerk login with Google, email, or username
+Behavioral Interview <br/>
 
-Private user dashboard
+📊 Interview Reports <br/>
 
-📊 History & Reports
+Stores previous evaluations <br/>
 
-Saves previous interviews
+Shows scoring, mistakes, recommendations <br/>
 
-Shows scoring, feedback, and improvements
+🖥️ Responsive UI <br/>
 
-🖥️ Modern UI/UX
+Clean & modern layout <br/>
 
-Minimal design
+Dark/Light theme ready <br/>
 
-Dark/Light theme ready
-
-Fully responsive
-
-📂 Project Structure
+📂 Project Structure <br/>
 ai-mock-interview/
-│── public/
-│── src/
-│   ├── app/
-│   ├── components/
-│   ├── lib/
-│   ├── styles/
-│   └── utils/
-│── package.json
-│── next.config.js
-│── README.md
+│── public/           <br/>
+│── src/              <br/>
+│   ├── app/          <br/>
+│   ├── components/   <br/>
+│   ├── lib/          <br/>
+│   ├── styles/       <br/>
+│   └── utils/        <br/>
+│── package.json      <br/>
+│── next.config.js    <br/>
+│── README.md         <br/>
 
-🚀 Deployment
+🚀 Deployment <br/>
 
-This platform is deployed using Vercel for instant builds and smooth SSR performance.
+This platform is deployed using Vercel. <br/>
 
 🌐 Live Demo: https://ai-mock-interview-orcin-iota.vercel.app/
-
+ <br/>
 📦 Source Code: https://github.com/Piyushsaxena123/ai-mock-interview
+ <br/>
 
-🔗 Links
+🔗 Links <br/>
 
 GitHub: https://github.com/Piyushsaxena123
+ <br/>
 
 Live Project: https://ai-mock-interview-orcin-iota.vercel.app/
+ <br/>
 
 Repo: https://github.com/Piyushsaxena123/ai-mock-interview
+ <br/>
