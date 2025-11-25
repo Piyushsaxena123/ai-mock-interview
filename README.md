@@ -46,16 +46,13 @@ Below are some images showcasing the PrepWise platform UI. <br/>
 
 ### 🖼️ Home Page Preview <br/>
 
-<!-- ⭐ Replace this link with your actual GitHub raw image link -->
-<img src="https://raw.githubusercontent.com/Piyushsaxena123/ai-mock-interview/main/public/Home-Page-Preview.png" width="800" /> <br/><br/>
 
 ### 🧑‍💻 Interview Screen <br/>
 
-<img src="https://via.placeholder.com/900x500.png?text=PrepWise+Interview+Screen" width="800" /> <br/><br/>
 
 ### 📊 Evaluation & Report Page <br/>
 
-<img src="https://via.placeholder.com/900x500.png?text=Evaluation+Report+Preview" width="800" /> <br/><br/>
+
 
 </div>
 
