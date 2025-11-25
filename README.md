@@ -103,20 +103,17 @@ Clean, fast, and responsive interface. <br/>
 
 ## 📂 <b>Project Structure</b> <br/>
 
-ai-mock-interview/
-│── public/
-│── src/
-│ ├── app/
-│ ├── components/
-│ ├── lib/
-│ ├── styles/
-│ └── utils/
-│── package.json
-│── next.config.js
-│── README.md
-
-php-template
-Copy code
+ai-mock-interview/<br/>
+│── public/<br/>
+│── src/<br/>
+│ ├── app/<br/>
+│ ├── components/<br/>
+│ ├── lib/<br/>
+│ ├── styles/<br/>
+│ └── utils/<br/>
+│── package.json<br/>
+│── next.config.js<br/>
+│── README.md<br/>
 
 <hr/>
 
