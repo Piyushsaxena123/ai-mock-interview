@@ -1,14 +1,4 @@
-Here is your **updated README**, with:
-✔️ A **brief implementation section** explaining how each tech works (Firebase, Vapi, Sipline, Gemini, etc.)
-✔️ A **“Tools & Services That Helped Build This Project”** section
-✔️ Sipline marked as the tool used to add the **3D model integration**
-✔️ Preserved `<br/>` and `<hr/>` structure like before
-
-You can directly paste this into GitHub.
-
----
-
-# 🤖 AI Mock Interview Platform <br/>
+# 🤖 PrepWise – AI Mock Interview Platform <br/>
 
 <div align="center"> <br/>
   <div> <br/>
@@ -22,7 +12,7 @@ You can directly paste this into GitHub.
     <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge" /> <br/>
   </div> <br/>
 
-  <h3 align="center">An AI-powered mock interview platform using Vapi, Sipline, Gemini, and Firebase to simulate real-time interview experiences.</h3> <br/>
+  <h3 align="center">PrepWise – An AI-powered mock interview platform built using Vapi, Sipline, Gemini, and Firebase to simulate real-time interview experiences.</h3> <br/>
 </div> <br/>
 
 ---
@@ -38,13 +28,36 @@ You can directly paste this into GitHub.
 
 ## 📘 Introduction <br/>
 
-The **AI Mock Interview Platform** provides conversational mock interviews with real-time voice interaction, question generation, and answer analysis. <br/>
-The platform simulates an actual interview environment using modern AI and cloud technologies. <br/>
+**PrepWise** is an AI-powered mock interview simulator that helps candidates prepare for real-world interviews through voice-based interaction, smart question generation, and automated feedback. <br/>
 
 Perfect for: <br/>
 ✔️ Students <br/>
 ✔️ Job seekers <br/>
-✔️ Developers preparing for tech rounds <br/>
+✔️ Developers preparing for tech interviews <br/>
+
+<hr/>
+
+## 📸 Project Images <br/>
+
+Below are some images showcasing the PrepWise platform UI. <br/>
+
+<div align="center"> <br/>
+
+### 🖼️ Home Page Preview <br/>
+
+<img src="https://via.placeholder.com/900x500.png?text=PrepWise+Homepage+Screenshot" width="800" /> <br/><br/>
+
+### 🧑‍💻 Interview Screen <br/>
+
+<img src="https://via.placeholder.com/900x500.png?text=AI+Interview+Screen" width="800" /> <br/><br/>
+
+### 📊 Evaluation & Report Page <br/>
+
+<img src="https://via.placeholder.com/900x500.png?text=Evaluation+Reports" width="800" /> <br/><br/>
+
+</div>
+
+Replace these URLs with your actual project images. <br/>
 
 <hr/>
 
@@ -53,88 +66,46 @@ Perfect for: <br/>
 * Next.js
 * React
 * TailwindCSS
-* Vapi AI (Voice Interview Engine)
-* Sipline API (3D Model Setup + Feedback Pipeline)
+* Vapi AI
+* Sipline API
 * Gemini AI
-* Firebase (Database + Storage)
-* Vercel (Deployment Platform)
+* Firebase
+* Vercel
 
 <hr/>
 
 ## 🛠️ Implementation (Brief Overview) <br/>
 
-Here is the short technical explanation of how the platform works: <br/>
+### 🔊 Vapi AI – Voice Interview Interaction <br/>
 
-### **🔊 Vapi AI – Voice Interview Interaction** <br/>
+Real-time voice conversation with an AI interviewer. <br/>
 
-Used to generate voice-based AI interviewer conversations. <br/>
-Handles speech-to-text, real-time responses, and natural voice output. <br/>
+### 🧠 Gemini API – Smart Question Generation <br/>
 
-### **🧠 Gemini API – Question Generation** <br/>
+Dynamic tech, HR, and behavioral questions. <br/>
 
-Produces technical questions, HR questions, follow-ups, and difficulty-based prompts. <br/>
+### 📁 Firebase – Database & Storage <br/>
 
-### **📁 Firebase – Database & Storage** <br/>
+Stores interview history, user responses, reports. <br/>
 
-Firebase is used for: <br/>
+### 🎨 Sipline API – 3D Model Integration + Feedback <br/>
 
-* Storing interview history <br/>
-* Saving user response data <br/>
-* Storing evaluation results <br/>
-* Real-time data syncing <br/>
+Adds a 3D animated interviewer and processes feedback. <br/>
 
-### **🎨 Sipline API – 3D Model Integration + Feedback Pipeline** <br/>
+### 🖥️ UI Layer (Next.js + Tailwind) <br/>
 
-Sipline helps with: <br/>
-
-* Adding and managing a **3D animated model** inside the app <br/>
-* Displaying an assistant/robot interviewer animation <br/>
-* Processing answer evaluation through its pipeline <br/>
-
-### **🎙️ Evaluation Engine** <br/>
-
-Combines answers from users with Sipline & Gemini to generate: <br/>
-
-* Scores <br/>
-* Improvement tips <br/>
-* Strength/weakness breakdown <br/>
-
-### **📱 Next.js UI Layer** <br/>
-
-Provides a fully responsive and fast frontend. <br/>
+Fast, responsive, and clean interface. <br/>
 
 <hr/>
 
 ## 🔥 Features <br/>
 
-### 🎤 AI Voice Interview (Vapi) <br/>
-
-* Speak with an AI interviewer <br/>
-* Real-time questioning <br/>
-
-### 🧠 Smart Question Generation (Gemini) <br/>
-
-* Technical + HR + Behavioral <br/>
-
-### 📝 Automatic Answer Evaluation <br/>
-
-* Score-based feedback <br/>
-* Improvement suggestions <br/>
-
-### 🎨 3D Model Integration (Sipline) <br/>
-
-* Animated interview assistant <br/>
-* Adds a more immersive experience <br/>
-
-### 💾 Firebase Data Handling <br/>
-
-* Saves interview sessions <br/>
-* Loads previous attempts <br/>
-
-### 🖥️ Responsive UI <br/>
-
-* Modern design <br/>
-* Mobile-friendly <br/>
+* AI Voice Interview <br/>
+* Dynamic Question Generation <br/>
+* Automatic Answer Evaluation <br/>
+* 3D Interviewer Model <br/>
+* Firebase Data Handling <br/>
+* Modern Responsive UI <br/>
 
 <hr/>
 
@@ -158,7 +129,7 @@ ai-mock-interview/
 
 ## 🚀 Deployment <br/>
 
-Hosted on **Vercel** for optimal performance. <br/>
+Hosted on **Vercel** for fast global performance. <br/>
 
 🌐 Live Demo: [https://ai-mock-interview-orcin-iota.vercel.app/](https://ai-mock-interview-orcin-iota.vercel.app/) <br/>
 📦 Source Code: [https://github.com/Piyushsaxena123/ai-mock-interview](https://github.com/Piyushsaxena123/ai-mock-interview) <br/>
@@ -175,13 +146,13 @@ Hosted on **Vercel** for optimal performance. <br/>
 
 ## ⭐ Want to Contribute? <br/>
 
-If you’d like to enhance features or report issues, feel free to open a PR or issue! <br/>
-Don’t forget to ⭐ the repository if you found it useful! <br/>
+Feel free to contribute or suggest improvements! <br/>
+If you like **PrepWise**, consider giving the repository a ⭐. <br/>
 
 ---
 
 If you want, I can also add:
-✅ A screenshots section
-✅ API setup instructions for Vapi + Sipline + Firebase
-✅ System architecture diagram
+✅ GIF demo section <br/>
+✅ Installation guide <br/>
+✅ API keys setup instructions for Vapi, Sipline, Firebase <br/>
 Just tell me!
